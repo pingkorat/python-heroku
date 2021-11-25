@@ -13,6 +13,10 @@ def foo():
     return jsonify(files)
 
 
+if __name__ == '__main__':
+    app.debug = True
+    app.run()
+
 """
 from flask import Flask, jsonify
 
