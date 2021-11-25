@@ -9,8 +9,8 @@ def hello():
 @app.route('/foo', methods=['POST'])
 def foo():
     data = request.json
-    if 'image' in request.files: request "Have image..."
-    return jsonify(data)
+    files = request.files
+    return jsonify(files)
 
 
 """
