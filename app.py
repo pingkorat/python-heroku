@@ -6,8 +6,8 @@ app = Flask(__name__)
 def hello():
     return "Hello Flask-Heroku"
 
-@app.route('/foo', methods=['POST'])
-def foo():
+@app.route('/test', methods=['POST'])
+def test():
     data = request.json
     #files = request.files
     return jsonify(data)
