@@ -9,13 +9,8 @@ def hello():
 @app.route('/foo', methods=['POST'])
 def foo():
     data = request.json
-    files = request.files
+    #files = request.files
     return jsonify(data)
-
-
-if __name__ == '__main__':
-    app.debug = True
-    app.run()
 
 """
 from flask import Flask, jsonify
