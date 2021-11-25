@@ -11,6 +11,9 @@ def foo():
     data = request.json
     return jsonify(data)
 
+@app.route('/test', methods=['POST'])
+def test():
+    return "Hello TEST"
 
 """
 from flask import Flask, jsonify
