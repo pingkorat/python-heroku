@@ -1,6 +1,4 @@
-from flask import Flask, request, jsonify
-from pyzbar import pyzbar
-from PIL import Image
+from flask import Flask, jsonify
 
 app = Flask(__name__)
 
@@ -30,13 +28,6 @@ def hello():
 @app.route('/api', methods=['GET'])
 def get_api():
     return jsonify(data)
-
-"""
-@app.route('/foo', methods=['POST'])
-def foo():
-    data = request.json
-    return jsonify(data)
-"""
 
 if __name__ == "__main__":
     app.run(debug=False)
