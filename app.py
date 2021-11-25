@@ -8,9 +8,10 @@ def hello():
 
 @app.route('/foo', methods=['POST'])
 def foo():
+    datas = request.data
     data = request.json
     files = request.files
-    return jsonify(files)
+    return jsonify(datas)
 
 
 if __name__ == '__main__':
