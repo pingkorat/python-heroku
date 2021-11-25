@@ -15,7 +15,8 @@ def foo():
 
 @app.route('/test', methods=['POST'])
 def test():
-     if 'image' in request.files:
+     return jsonify({'ok': True})
+     """if 'image' in request.files:
                 image = request.files['image']
                 barcodes = pyzbar.decode(Image.open(image))
 
@@ -37,7 +38,7 @@ def test():
                 else:
                     return jsonify({'error': 'NO_DETECT'})
 
-        return jsonify({'ok': True})
+        return jsonify({'ok': True})"""
 
 """
 from flask import Flask, jsonify
