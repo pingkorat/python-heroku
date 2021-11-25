@@ -1,4 +1,6 @@
 from flask import Flask, request, jsonify
+from pyzbar import pyzbar
+from PIL import Image
 
 app = Flask(__name__)
 
@@ -13,7 +15,29 @@ def foo():
 
 @app.route('/test', methods=['POST'])
 def test():
-    return "Hello TEST"
+     if 'image' in request.files:
+                image = request.files['image']
+                barcodes = pyzbar.decode(Image.open(image))
+
+                results = []
+                for barcode in barcodes:
+                    results.append({
+                        'code': barcode.data.decode("utf-8"),
+                        'type': barcode.type,
+                        'postion': {
+                            'x': barcode.rect.left,
+                            'y': barcode.rect.top,
+                            'w': barcode.rect.width,
+                            'h': barcode.rect.height
+                        }
+                    })
+
+                if results:
+                    return jsonify({'results': results})
+                else:
+                    return jsonify({'error': 'NO_DETECT'})
+
+        return jsonify({'ok': True})
 
 """
 from flask import Flask, jsonify
